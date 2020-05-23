@@ -38,7 +38,7 @@
 (define-command show-rss-feeds ()
   "Show RSS Feeds"
   (let* ((rss-buffer (make-buffer :title "*RSS Feed*"))
-         (rss-buffer-contents (rss-generate-html (rss-site "https://news.ycombinator.com/rss")))
+         (rss-buffer-contents (rss-feeds-generate-html rss-urls))
          (insert-contents (ps:ps (setf (ps:@ document Body |innerHTML|)
                                        (ps:lisp rss-buffer-contents)))))
     (ffi-buffer-evaluate-javascript rss-buffer insert-contents)
