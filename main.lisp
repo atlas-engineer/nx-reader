@@ -36,11 +36,13 @@
    (:span (loop for rss-url in rss-urls collect
                 (rss-generate-html (rss-site rss-url))))))
 
+;; Commands must be defined in the Next package
+(in-package :next)
 (define-command show-rss-feeds ()
   "Show RSS Feeds. To set your RSS feeds, set RSS-URLS in the
 NX-READER package."
   (let* ((rss-buffer (make-buffer :title "*RSS Feed*"))
-         (rss-buffer-contents (rss-feeds-generate-html rss-urls))
+         (rss-buffer-contents (nx-reader:rss-feeds-generate-html nx-reader:rss-urls))
          (insert-contents (ps:ps (setf (ps:@ document Body |innerHTML|)
                                        (ps:lisp rss-buffer-contents)))))
     (ffi-buffer-evaluate-javascript rss-buffer insert-contents)
