@@ -22,5 +22,5 @@
               collect
               (markup:markup (:li (:p (:b (rss:title item)))
                                   (:p (:a :href (rss:link item) (rss:link item)))
-                                  (:p (rss:description item))))))))
+                                  (:p (markup:raw (rss:description item)))))))))
 
