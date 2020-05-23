@@ -1,0 +1,3 @@
+* NX-Reader
+NX-Reader is a simple RSS feed reader for the Next browser. Please see
+the soruce code for documentation.
