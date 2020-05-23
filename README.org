@@ -1,3 +1,16 @@
 * NX-Reader
 NX-Reader is a simple RSS feed reader for the Next browser. Please see
-the soruce code for documentation.
+the source code for more documentation.
+* Usage
+Set the =nx-reader:feed-urls= variable to a list of URLs you would
+like to retrieve feeds for, then invoke the command =show-rss-feeds=.
+
+Example configuration:
+
+#+NAME: set-urls
+#+BEGIN_SRC lisp
+(setf nx-reader:feed-urls (list "https://www.abc.xyz"
+                                "https://www.cde.qrt"))
+#+END_SRC
+
+Then, invoke =show-rss-feeds= to view your configured feeds.
