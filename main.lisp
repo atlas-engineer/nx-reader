@@ -31,12 +31,14 @@
                                    (:p (markup:raw (rss:description item))))))))))
 
 (defun rss-feeds-generate-html (&optional (rss-urls rss-urls))
+  "Generate the HTML representing a list of RSS feeds."
   (markup:markup
    (:span (loop for rss-url in rss-urls collect
                 (rss-generate-html (rss-site rss-url))))))
 
 (define-command show-rss-feeds ()
-  "Show RSS Feeds"
+  "Show RSS Feeds. To set your RSS feeds, set RSS-URLS in the
+NX-READER package."
   (let* ((rss-buffer (make-buffer :title "*RSS Feed*"))
          (rss-buffer-contents (rss-feeds-generate-html rss-urls))
          (insert-contents (ps:ps (setf (ps:@ document Body |innerHTML|)
