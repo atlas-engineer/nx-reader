@@ -3,7 +3,24 @@
 (defpackage :nx-reader
   (:use :common-lisp :next)
   (:export
-   #:document-keywords))
+   #:rss-site
+   #:rss-generate-html))
+
+(in-package :nx-reader)
 
 (defun rss-site (url)
+  "Retrieve the RSS from a specific feed and parse it into an RSS object."
   (rss:parse-rss-stream (dex:get url :want-stream t)))
+
+(defun rss-generate-html (rss-object)
+  "Generate the HTML representing a particular RSS feed."
+  (markup:markup
+   (:h1 (rss:title rss-object))
+   (:p (:a :href (rss:link rss-object) (rss:link rss-object)))
+   (:p (rss:description rss-object))
+   (:ul (loop for item in (rss:items rss-object)
+              collect
+              (markup:markup (:li (:p (:b (rss:title item)))
+                                  (:p (:a :href (rss:link item) (rss:link item)))
+                                  (:p (rss:description item))))))))
+
