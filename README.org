@@ -9,8 +9,8 @@ Example configuration:
 
 #+NAME: set-urls
 #+BEGIN_SRC lisp
-(setf nx-reader:feed-urls (list "https://www.abc.xyz"
-                                "https://www.cde.qrt"))
+(setf nx-reader:rss-urls (list "https://www.abc.xyz"
+                               "https://www.cde.qrt"))
 #+END_SRC
 
 Then, invoke =show-rss-feeds= to view your configured feeds.
