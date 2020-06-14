@@ -1,7 +1,7 @@
 (in-package :cl-user)
 
 (defpackage :nx-reader
-  (:use :common-lisp :next)
+  (:use :common-lisp :nyxt)
   (:export
    #:rss-site
    #:rss-generate-html
@@ -36,8 +36,8 @@
    (:span (loop for rss-url in rss-urls collect
                 (rss-generate-html (rss-site rss-url))))))
 
-;; Commands must be defined in the Next package
-(in-package :next)
+;; Commands must be defined in the Nyxt package
+(in-package :nyxt)
 (define-command show-rss-feeds ()
   "Show RSS Feeds. To set your RSS feeds, set RSS-URLS in the
 NX-READER package."

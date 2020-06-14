@@ -1,5 +1,5 @@
 (asdf:defsystem nx-reader
-  :depends-on (:next
+  :depends-on (:nyxt
                :cl-markup
                :rss
                :dexador)
